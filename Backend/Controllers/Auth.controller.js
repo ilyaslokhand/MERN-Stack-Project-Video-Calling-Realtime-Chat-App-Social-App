@@ -133,6 +133,7 @@ const onBoarding = asyncHandler(async(req,res)=>{
         nativelangauge,
         Learninglangauge,
         location,
+        bio,
         onBoarding:true,
       },
     },
