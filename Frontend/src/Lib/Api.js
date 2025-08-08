@@ -6,9 +6,15 @@ return response.data
 }
 
 export const currentUser = async () => {
-    const response = await axiosInstance.get("/auth/currentUser");
-    return response.data; 
+   try {
+     const response = await axiosInstance.get("/auth/currentUser");
+     return response.data; 
+   } catch (error) {
+    return null;
+   }
   }
+
+
 
 export const onBoarding = async (boardingData)=>{
   const response = await axiosInstance.post('/auth/onBoarding',boardingData);
@@ -18,5 +24,10 @@ export const onBoarding = async (boardingData)=>{
 
 export const loginUser = async (loginData)=>{
   const response = await axiosInstance.post('/auth/login',loginData);
+  return response.data;
+}
+
+export const logoutUser = async ()=>{
+  const response = await axiosInstance.post('/auth/logout');
   return response.data;
 }

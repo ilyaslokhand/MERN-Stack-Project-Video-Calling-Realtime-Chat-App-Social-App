@@ -33,7 +33,7 @@ if (isLoading) {
               path="/"
               element={
                 isAuthenticated && isOnBoarded ? (
-                  <Layout>
+                  <Layout showSidebar={true}>
                     <Home />
                   </Layout>
                   
