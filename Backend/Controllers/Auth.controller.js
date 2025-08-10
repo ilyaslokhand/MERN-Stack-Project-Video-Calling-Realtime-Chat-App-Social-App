@@ -37,8 +37,9 @@ const registerUser = asyncHandler(async(req,res)=>{
   if(existingUser){
     throw new apiError(400, "user already exists with this email");
   }
-  const idx = Math.floor(Math.random()*100)+1;
-  const avatar = `https://avatar.iran.liara.run/public/20${idx}.png`;
+  const randomSeed = Math.random().toString(36).substring(7); // random string
+  const avatar = `https://api.dicebear.com/7.x/pixel-art/svg?seed=${randomSeed}`;
+
   const options = {
     httpOnly: true,
     secure: true,

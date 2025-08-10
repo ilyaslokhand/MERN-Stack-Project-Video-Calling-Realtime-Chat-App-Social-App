@@ -11,12 +11,13 @@ import Loader from './Component/Loader'
 import useauthUser from './Hooks/useauthUser'
 import { Toaster } from "react-hot-toast";
 import Layout from './Component/Layout'
+import usethemeStore from './store/usethemeStore'
 
 
 const App = () => {
 
 const {isLoading, authUser} = useauthUser()
-
+const {theme} = usethemeStore
 const isAuthenticated = Boolean(authUser)
 const isOnBoarded = authUser?.onBoarding
 
@@ -27,7 +28,7 @@ if (isLoading) {
 }
 
   return (
-    <div className='min-h-screen' data-theme="night">
+    <div className='min-h-screen' data-theme="forest">
       <Routes>
         <Route
               path="/"

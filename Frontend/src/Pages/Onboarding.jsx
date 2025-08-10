@@ -20,8 +20,6 @@ const Onboarding = () => {
     location: authUser?.location || ""
   })
 
-
-
   const {mutate, error,isError,isPending}= useMutation(
     {
       mutationFn:onBoarding,
@@ -34,14 +32,13 @@ const Onboarding = () => {
       }
     }
   )
-const handleRandomAvatar = () => {
-    const idx = Math.floor(Math.random() * 100) + 1; 
-    const randomAvatar = `https://avatar.iran.liara.run/public/${idx}.png`;
+
+    const handleRandomAvatar = () => {
+    const seed = Math.random().toString(36).substring(7);
+    const randomAvatar =  `https://api.dicebear.com/7.x/bottts/svg?seed=${seed}`;
     setboardingData({ ...boardingData, profilepic: randomAvatar });
     toast.success("Random profile picture generated!");
-  };
-
-  
+};
 
   const handleonBoardingbtn = (e)=>{
     e.preventDefault()
@@ -65,7 +62,8 @@ const handleRandomAvatar = () => {
               }
             </div>
             <div className='mt-5'>
-              <button type='button' className="btn btn-accent" onClick={handleRandomAvatar}><ShuffleIcon className="size-4 mr-2"  />Generate Random Avatar</button>
+              <button type='button' className="btn btn-accent" onClick={handleRandomAvatar}>
+              <ShuffleIcon className="size-4 mr-2"  />Generate Random Avatar</button>
             </div>
           </div>
           <div className="form-control w-full">
