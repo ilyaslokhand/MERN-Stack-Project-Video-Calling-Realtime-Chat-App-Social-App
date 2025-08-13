@@ -39,9 +39,9 @@ const getFriendList = asyncHandler(async (req, res) => {
     .populate("friends", "fullName profilepic nativelangauge Learninglangauge");
     // console.log("Friend List User:", friendList);
 
-  if (!friendList || !friendList.friends || friendList.friends.length === 0) {
-    throw new apiError(404, "No friends found");
-  }
+  // if (!friendList || !friendList.friends || friendList.friends.length === 0) {
+  //   throw new apiError(404, "No friends found");
+  // }
   
 
   res.status(200).json(new apiResponse(friendList, 200, "Friend list fetched successfully"));
@@ -140,10 +140,10 @@ const getFriendRequest = asyncHandler(async (req, res) => {
     status: "accepted",
   }).populate("sender", "fullName profilepic nativelangauge Learninglangauge");
 
-  // Optional error if nothing found
-  if (!incommingRequests.length && !acceptedRequests.length) {
-    throw new apiError(404, "No friend requests found");
-  }
+  // // Optional error if nothing found
+  // if (!incommingRequests.length && !acceptedRequests.length) {
+  //   throw new apiError(404, "No friend requests found");
+  // }
 
   res.status(200).json(new apiResponse(
     {
@@ -163,9 +163,9 @@ const getongoingfriendRequest = asyncHandler(async(req,res)=>{
    status:"pending",
   }).populate("receiver", "fullName profilepic nativelangauge Learninglangauge");
 
-   if (!ongoingfriendRequests.length && !ongoingfriendRequests.length) {
-    throw new apiError(404, "No friend requests found");
-  };
+  //  if (!ongoingfriendRequests.length && !ongoingfriendRequests.length) {
+  //   throw new apiError(404, "No friend requests found");
+  // };
 
   res.status(200).json( new apiResponse( ongoingfriendRequests, 200, "ongoing friend requests fetched successfully"))
 
