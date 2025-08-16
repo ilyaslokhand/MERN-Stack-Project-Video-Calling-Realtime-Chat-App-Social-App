@@ -31,7 +31,7 @@ export const logoutUser = async () => {
 
 export const RecommandedFriends = async () => {
   const response = await axiosInstance.get("/user/recommendedFriends");
-  return response.data.data;
+  return response?.data?.data;
 };
 
 export const FriendList = async () => {
@@ -52,5 +52,10 @@ export const getOutgoingFriendReqs = async () => {
 
 export const getFriendRequestData = async ()=>{
   const response = await axiosInstance.get("/user/friend-requests")
-  return response.data.data.incommingRequests
+  return response.data.data
+}
+
+export const acceptFriendRequest = async (requestId)=>{
+  const response = await axiosInstance.put(`user/friend-request/${requestId}/accept`)
+  return response.data
 }

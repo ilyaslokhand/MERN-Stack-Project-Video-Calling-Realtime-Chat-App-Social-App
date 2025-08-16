@@ -2,31 +2,32 @@ import React from 'react'
 import { Link } from 'react-router'
 import { LANGUAGE_TO_FLAG } from '../constant'
 
-const FrienddataCard = ({FriendListdata}) => {
+const FrienddataCard = ({friend }) => {
+  console.log("newfriend=>",friend)
   return (
-    <div className='card bg-base-200'>
+    <div className='card bg-base-200 mt-10'>
       <div className='card-body p-4'>
 
         {/* fetch username and profile */}
-       <div className='flex gap-3'>
+       <div className='flex gap-3 items-center'>
         <div className='avatar size-12'>
-          <img src={FriendListdata?.profilepic} alt={FriendListdata?.fullName}/>
+          <img src={friend?.profilepic} alt={friend?.fullName}/>
         </div>
-        <p>{FriendListdata?.fullName}</p>
+        <p>{friend?.fullName}</p>
        </div>
        {/* fetch the langauge  */}
-       <div className='flex flex-wrap'>
+       <div className='flex flex-wrap gap-3'>
       <span className='badge badge-secondary text-xs'>
-      {getLangaugeFlag(FriendListdata?.nativelangauge)}
-      native:{FriendListdata?.nativelangauge}
+      {getLangaugeFlag(friend?.nativelangauge)}
+      native:{friend?.nativelangauge}
       </span>
       <span className='badge badge-outline text-xs'>
-      {getLangaugeFlag(FriendListdata?.Learninglangauge)}
-      native:{FriendListdata?.Learninglangauge}
+      {getLangaugeFlag(friend?.Learninglangauge)}
+      native:{friend?.Learninglangauge}
       </span>
        </div>
-       <div>
-        <Link className='btn btn-ghost w-full' to={`/chats/${FriendListdata?._id}`}>Message</Link>
+       <div className='mt-3'>
+        <Link className='btn btn-primary w-full' to={`/chats/${friend?._id}`}>Message</Link>
        </div>
       </div>
     </div>
