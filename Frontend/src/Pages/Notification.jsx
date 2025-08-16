@@ -3,11 +3,12 @@ import React, { useEffect } from "react";
 import { getFriendRequestData, acceptFriendRequest } from "../Lib/Api/";
 import {BellDotIcon, ClockIcon, MessageSquareIcon, UserCheckIcon } from "lucide-react";
 import  { getLangaugeFlag } from "../Component/FrienddataCard";
-import { Link } from "react-router";
+import { Link, useParams } from "react-router";
 import noNotitication from "../Component/NoNotitication";
 import NoNotitication from "../Component/NoNotitication";
 
 const Notification = () => {
+
   const queryClient = useQueryClient();
 
   const { data: FriendRequestData = [], isLoading: FriendRequestDataloading } =
@@ -109,10 +110,10 @@ const Notification = () => {
         </p>
         </div>
         </div>
-        <div className="badge badge-success">
+        <Link className="btn btn-primary btn-sm" to={`/chat/${request._id}`}>
           <MessageSquareIcon  className="h-3 w-3 mr-1"/>
           New Friend
-        </div>
+        </Link>
          </div>
          </div>
          </div>

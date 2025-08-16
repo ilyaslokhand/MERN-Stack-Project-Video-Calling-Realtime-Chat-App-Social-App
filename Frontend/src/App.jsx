@@ -73,7 +73,7 @@ const App = () => {
           }
         />
         <Route
-          path="/chat"
+          path="/chats/:id"
           element={isAuthenticated && isOnBoarded ? (
             <Layout showSidebar={false}>
               <Chat/>

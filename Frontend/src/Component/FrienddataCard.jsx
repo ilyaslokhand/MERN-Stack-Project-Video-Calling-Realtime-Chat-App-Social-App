@@ -3,7 +3,6 @@ import { Link } from 'react-router'
 import { LANGUAGE_TO_FLAG } from '../constant'
 
 const FrienddataCard = ({friend }) => {
-  console.log("newfriend=>",friend)
   return (
     <div className='card bg-base-200 mt-10'>
       <div className='card-body p-4'>
