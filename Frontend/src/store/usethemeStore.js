@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 
-const UseThemeStore = create((set) => ({
+const useThemeStore = create((set) => ({
   mytheme: localStorage.getItem("streamify-theme") || "coffee",
   setTheme: (theme) => {
     localStorage.setItem("streamify-theme", theme);
@@ -8,5 +8,4 @@ const UseThemeStore = create((set) => ({
   }
 }))
 
-export default UseThemeStore
-
+export default useThemeStore; 

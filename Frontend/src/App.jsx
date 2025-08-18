@@ -11,11 +11,11 @@ import Loader from "./Component/Loader";
 import useauthUser from "./Hooks/useauthUser";
 import { Toaster } from "react-hot-toast";
 import Layout from "./Component/Layout";
-import UseThemeStore from "./store/UseThemeStore";
+import useThemeStore from "./store/useThemeStore";
 
 const App = () => {
   const { isLoading, authUser } = useauthUser();
-  const { mytheme } = UseThemeStore();
+  const { mytheme } = useThemeStore();
   const isAuthenticated = Boolean(authUser);
   const isOnBoarded = authUser?.onBoarding;
 
@@ -74,34 +74,38 @@ const App = () => {
         />
         <Route
           path="/chats/:id"
-          element={isAuthenticated && isOnBoarded ? (
-            <Layout showSidebar={false}>
-              <Chat/>
-            </Layout>
-          ):(
-            <Navigate to={!isAuthenticated? "/login" : "/onboarding"}/>
-          )
-        }
+          element={
+            isAuthenticated && isOnBoarded ? (
+              <Layout showSidebar={false}>
+                <Chat />
+              </Layout>
+            ) : (
+              <Navigate to={!isAuthenticated ? "/login" : "/onboarding"} />
+            )
+          }
         />
         <Route
           path="/call/:id"
-          element={isAuthenticated && isOnBoarded? (
-            <Layout>
-              <Call/>
-            </Layout>
-          ):(
-            <Navigate to={!isAuthenticated? "/login" : "/onboarding"}/>
-          )
-        }
+          element={
+            isAuthenticated && isOnBoarded ? (
+              <Layout>
+                <Call />
+              </Layout>
+            ) : (
+              <Navigate to={!isAuthenticated ? "/login" : "/onboarding"} />
+            )
+          }
         />
         <Route
           path="/notification"
           element={
-            isAuthenticated ? 
-            <Layout showSidebar={true} >
-            <Notification />
-             </Layout>
-            : <Navigate to="/Login" />
+            isAuthenticated ? (
+              <Layout showSidebar={true}>
+                <Notification />
+              </Layout>
+            ) : (
+              <Navigate to="/Login" />
+            )
           }
         />
       </Routes>
