@@ -22,7 +22,7 @@ const Sidebar = () => {
             <HomeIcon className="size-5 text-base-content opacity-70" />
             <span>Home</span>
           </Link>
-          <Link
+          {/* <Link
             to="/Friends"
             className={`btn btn-ghost w-full normal-case justify-start ${
               currentPath === "/Friends" ? "btn-active" : ""
@@ -30,7 +30,7 @@ const Sidebar = () => {
           >
             <UsersIcon className="size-5 text-base-content opacity-70" />
             <span>Friends</span>
-          </Link>
+          </Link> */}
           <Link
             to="/notification"
             className={`btn btn-ghost w-full normal-case justify-start ${
