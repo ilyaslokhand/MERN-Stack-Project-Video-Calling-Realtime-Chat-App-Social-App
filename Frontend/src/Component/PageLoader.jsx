@@ -1,8 +1,8 @@
 import { LoaderIcon } from "lucide-react";
-import useThemeStore from "../store/useThemeStore";
+import ThemeStore from "../store/ThemeStore";
 
 const PageLoader = () => {
-  const { mytheme } = useThemeStore();
+  const { mytheme } = ThemeStore();
   return (
     <div
       className="min-h-screen flex items-center justify-center"
