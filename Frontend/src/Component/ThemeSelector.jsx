@@ -1,10 +1,10 @@
 import { THEMES } from "../constant";
 import React from "react";
-import usethemeStore from "../store/usethemeStore";
+import UseThemeStore from "../store/usethemeStore";
 import { PaletteIcon } from "lucide-react";
 
 const ThemeSelector = () => {
-  const { mytheme, setTheme } = usethemeStore();
+  const { mytheme, setTheme } = UseThemeStore();
 
   return (
     <div className="dropdown dropdown-end">

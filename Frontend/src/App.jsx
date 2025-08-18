@@ -11,11 +11,11 @@ import Loader from "./Component/Loader";
 import useauthUser from "./Hooks/useauthUser";
 import { Toaster } from "react-hot-toast";
 import Layout from "./Component/Layout";
-import usethemeStore from "./store/usethemeStore";
+import UseThemeStore from "./store/UseThemeStore";
 
 const App = () => {
   const { isLoading, authUser } = useauthUser();
-  const { mytheme } = usethemeStore();
+  const { mytheme } = UseThemeStore();
   const isAuthenticated = Boolean(authUser);
   const isOnBoarded = authUser?.onBoarding;
 
