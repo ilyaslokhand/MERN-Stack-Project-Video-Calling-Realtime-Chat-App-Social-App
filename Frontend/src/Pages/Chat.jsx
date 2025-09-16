@@ -15,6 +15,7 @@ const STREAM_API_KEY = import.meta.env.VITE_STREAM_API_KEY;
 
 const ChatPage = () => {
   const { id: targetUserId } = useParams();
+  console.log("targetUserId=>", targetUserId)
   const [chatClient, setchatClient] = useState(null);
   const [channel, setChannel] = useState(null);
   const [isloading, setisloading] = useState(true);
@@ -63,7 +64,8 @@ const ChatPage = () => {
   }, [authUser, tokenData,targetUserId]);
 
 
-  if (!chatClient,!channel,isloading ) return <ChatLoader/>
+  if (!chatClient || !channel || isloading) return <ChatLoader />;
+
 
   const handlevideocall = ()=>{
     if(channel){
