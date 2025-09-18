@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import useLoggedinUser from "../Hooks/useLoggedinUser";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [loginData, setloginData] = useState({

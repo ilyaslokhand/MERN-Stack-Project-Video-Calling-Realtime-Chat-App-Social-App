@@ -1,8 +1,9 @@
 import React from 'react'
-import { Link } from 'react-router'
 import { LANGUAGE_TO_FLAG } from '../constant'
+import { Link } from 'react-router-dom'
 
 const FrienddataCard = ({friend }) => {
+
   return (
     <div className='card bg-base-200 mt-10'>
       <div className='card-body p-4'>
@@ -26,12 +27,16 @@ const FrienddataCard = ({friend }) => {
       </span>
        </div>
        <div className='mt-3'>
-        <Link className='btn btn-primary w-full' to={`/chats/${friend?._id}`}>Message</Link>
+        <Link className='btn btn-primary w-full' to={`/chat/${friend?._id}`}>
+  Message
+</Link>
+
        </div>
       </div>
     </div>
   )
 }
+
 
 export default FrienddataCard
 

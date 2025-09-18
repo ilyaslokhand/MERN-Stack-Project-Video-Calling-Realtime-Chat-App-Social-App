@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router";
+import { useNavigate, useParams } from "react-router-dom";
 import useauthUser from "../Hooks/useauthUser";
 import { getStreamToken } from "../Lib/Api";
 import '@stream-io/video-react-sdk/dist/css/styles.css';

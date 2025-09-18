@@ -7,7 +7,7 @@ import {
   sendfriendRequesttouser,
 } from "../Lib/Api";
 import { useEffect } from "react";
-import { Link } from "react-router";
+import { Link } from "react-router-dom";
 import {
   CheckCircleIcon,
   MapPinIcon,
