@@ -1,27 +1,26 @@
+// src/App.jsx
 import React from "react";
-import { Navigate, Route, Routes } from "react-router";
+import { Navigate, Route, Routes } from "react-router-dom"; // <- changed
 import Home from "./Pages/Home";
 import Signup from "./Pages/Signup";
 import Login from "./Pages/Login";
 import Onboarding from "./Pages/Onboarding";
 import Notification from "./Pages/Notification";
-import Chat from "./Pages/Chat";
 import Call from "./Pages/Call";
 import Loader from "./Component/Loader";
-import useauthUser from "./Hooks/useauthUser";
+import useAuthUser from "./Hooks/useauthUser"; // optional: rename if your export differs
 import { Toaster } from "react-hot-toast";
 import Layout from "./Component/Layout";
 import ThemeStore from "./store/ThemeStore";
+import ChatPage from "./Pages/Chat"; // keep one import
 
 const App = () => {
-  const { isLoading, authUser } = useauthUser();
+  const { isLoading, authUser } = useAuthUser(); // make sure this matches your hook export
   const { mytheme } = ThemeStore();
   const isAuthenticated = Boolean(authUser);
-  const isOnBoarded = authUser?.onBoarding;
+  const isOnBoarded = Boolean(authUser?.onBoarding); // ensure correct property name
 
-  if (isLoading) {
-    return <Loader />;
-  }
+  if (isLoading) return <Loader />;
 
   return (
     <div className="min-h-screen" data-theme={mytheme}>
@@ -34,30 +33,33 @@ const App = () => {
                 <Home />
               </Layout>
             ) : (
-              <Navigate to={!isAuthenticated ? "/login" : "/onboarding"} />
+              <Navigate to={!isAuthenticated ? "/login" : "/onboarding"} replace />
             )
           }
         />
+
         <Route
           path="/signup"
           element={
             !isAuthenticated ? (
               <Signup />
             ) : (
-              <Navigate to={isOnBoarded ? "/" : "/onboarding"} />
+              <Navigate to={isOnBoarded ? "/" : "/onboarding"} replace />
             )
           }
         />
+
         <Route
           path="/login"
           element={
             !isAuthenticated ? (
               <Login />
             ) : (
-              <Navigate to={isOnBoarded ? "/" : "/onboarding"} />
+              <Navigate to={isOnBoarded ? "/" : "/onboarding"} replace />
             )
           }
         />
+
         <Route
           path="/onboarding"
           element={
@@ -65,37 +67,40 @@ const App = () => {
               !isOnBoarded ? (
                 <Onboarding />
               ) : (
-                <Navigate to="/" />
+                <Navigate to="/" replace />
               )
             ) : (
-              <Navigate to="/login" />
+              <Navigate to="/login" replace />
             )
           }
         />
+
         <Route
           path="/chat/:id"
           element={
             isAuthenticated && isOnBoarded ? (
               <Layout showSidebar={false}>
-                <Chat />
+                <ChatPage />
               </Layout>
             ) : (
-              <Navigate to={!isAuthenticated ? "/login" : "/onboarding"} />
+              <Navigate to={!isAuthenticated ? "/login" : "/onboarding"} replace />
             )
           }
         />
+
         <Route
           path="/call/:id"
           element={
             isAuthenticated && isOnBoarded ? (
-              <Layout>
+              <Layout showSidebar={false}>
                 <Call />
               </Layout>
             ) : (
-              <Navigate to={!isAuthenticated ? "/login" : "/onboarding"} />
+              <Navigate to={!isAuthenticated ? "/login" : "/onboarding"} replace />
             )
           }
         />
+
         <Route
           path="/notification"
           element={
@@ -104,11 +109,15 @@ const App = () => {
                 <Notification />
               </Layout>
             ) : (
-              <Navigate to="/Login" />
+              <Navigate to="/login" replace />
             )
           }
         />
+
+        {/* fallback / 404 */}
+        <Route path="*" element={<Navigate to={isAuthenticated ? "/" : "/login"} replace />} />
       </Routes>
+
       <Toaster />
     </div>
   );

@@ -47,8 +47,10 @@ const ChatPage = () => {
 // (Chahe tum start karo ya Ramesh, room hamesha same milega.)
 
         const channel = client.channel("messaging", channelID,{ // WhatsApp: "Mujhe ek room do jisme sirf main aur Ramesh baat karenge."
-          members: [authUser._id, targetUserId] 
+          members: [authUser._id, targetUserId],
+          created_by_id: authUser._id,
         });
+        await channel.create();
         await channel.watch(); // WhatsApp screen khol di, ab saare purane aur naye messages dikhne lagenge.
        setchatClient(client);
        setChannel(channel)

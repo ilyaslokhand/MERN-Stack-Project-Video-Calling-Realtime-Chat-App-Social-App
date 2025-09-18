@@ -7,4 +7,5 @@ const router = Router();
 
 router.get("/token", verifyJWT,getstreamToken)
 
+
 export default router;
